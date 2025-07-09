@@ -83,6 +83,50 @@ cms-synergy-docker-devsecops-template/
 
 ---
 
+## 🗺️ Architecture Diagram
+
+```mermaid
+graph TD
+  NGINX["NGINX (Ingress/Reverse Proxy)"]
+  API[".NET Core API"]
+  Gateway["API Gateway (Ocelot)"]
+  Cube["Cube.js Analytics"]
+  Redis["Redis"]
+  NGINX --> Gateway
+  Gateway --> API
+  Gateway --> Cube
+  API --> Redis
+  Cube --> Redis
+```
+
+---
+
+## 📃 API Documentation
+
+- The .NET Core API exposes OpenAPI/Swagger docs at `/swagger` when running locally or in a container.
+- You can view and test endpoints interactively via the Swagger UI.
+- For more details, see the `api/` service folder.
+
+---
+
+## 🧠 Common Questions
+
+1. **How do I run the application locally?**
+   ```sh
+   docker-compose up --build
+   ```
+
+2. **How do I run the application in Kubernetes?**
+   ```sh
+   kubectl apply -k k8s/
+   ```
+
+3. **How do I access the Swagger UI?**
+   - NGINX is exposed as a NodePort (ports 30080/30443 by default).
+   - Access `http://<your-node-ip>:30080/swagger` or `https://<your-node-ip>:30443/swagger`
+
+---
+
 ## ☸️ Kubernetes Quick Start
 
 1. **Prerequisites:**
