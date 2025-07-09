@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cubejs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cubejs
+  template:
+    metadata:
+      labels:
+        app: cubejs
+    spec:
+      containers:
+      - name: cubejs
+        image: cubejs/cube:latest
+        ports:
+        - containerPort: 4000
+        livenessProbe:
+          httpGet:
+            path: /readyz
+            port: 4000
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /readyz
+            port: 4000
+          initialDelaySeconds: 5
+          periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cubejs
+spec:
+  ports:
+    - port: 4000
+      targetPort: 4000
+  selector:
+    app: cubejs 
