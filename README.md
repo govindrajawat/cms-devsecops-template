@@ -43,46 +43,6 @@ This project mirrors a real-world enterprise environment with NGINX, .NET Core A
 
 ---
 
-## 🧱 Folder Structure
-
-cms-synergy-docker-devsecops-template/
-├── docker-compose.yml
-├── docker-compose.override.yml
-├── Jenkinsfile
-├── nginx/
-│   ├── nginx.conf
-│   ├── proxy.conf
-│   ├── mime.types
-│   └── ssl/
-├── appsettings/
-│   ├── api/
-│   ├── api-gateway/
-│   └── web/
-├── cubejs-new/
-│   ├── .env
-│   └── cube/
-├── security/
-│   ├── trivy-scan.sh
-│   ├── dependency-check/
-│   └── sonar/
-│       └── sonar-project.properties
-├── jenkins/
-│   ├── Dockerfile
-│   ├── plugins.txt
-│   └── jobs/
-├── scripts/
-│   └── deploy.sh
-├── k8s/
-│   ├── nginx-deployment.yaml
-│   ├── api-deployment.yaml
-│   ├── api-gateway-deployment.yaml
-│   ├── cubejs-deployment.yaml
-│   ├── redis-deployment.yaml
-│   └── kustomization.yaml
-└── README.md
-
----
-
 ## 🗺️ Architecture Diagram
 
 ```mermaid
